@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  email          String    @unique
+  password       String
+  role           String    @default("Member") // "Admin" | "Member"
+  avatar         String    @default("")
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  ownedProjects  Project[] @relation("ProjectOwner")
+  memberProjects Project[] @relation("ProjectMembers", fields: [memberProjectIds], references: [id])
+  memberProjectIds String[]  @db.ObjectId
+  assignedTasks  Task[]
+}
+
+model Project {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String   @default("")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  owner       User     @relation("ProjectOwner", fields: [ownerId], references: [id])
+  ownerId     String   @db.ObjectId
+
+  members     User[]   @relation("ProjectMembers", fields: [memberIds], references: [id])
+  memberIds   String[] @db.ObjectId
+  tasks       Task[]
+}
+
+model Task {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String    @default("")
+  status      String    @default("Todo")     // "Todo" | "In Progress" | "Done"
+  priority    String    @default("Medium")   // "High" | "Medium" | "Low"
+  dueDate     DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId   String    @db.ObjectId
+  assignee    User?     @relation(fields: [assigneeId], references: [id])
+  assigneeId  String?   @db.ObjectId
+}
