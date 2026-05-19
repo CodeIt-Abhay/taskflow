@@ -8,9 +8,9 @@
 
 | Service | URL |
 |---------|-----|
-| Frontend | `https://taskflow-frontend.up.railway.app` |
-| Backend API | `https://taskflow-backend.up.railway.app` |
-| Health Check | `https://taskflow-backend.up.railway.app/health` |
+| Frontend | `https://efficient-surprise-production-cf10.up.railway.app/` |
+| Backend API | `https://taskflow-production-a1cb.up.railway.app/` |
+| Health Check | `https://taskflow-production-a1cb.up.railway.app//health` |
 
 **Demo Credentials**
 
@@ -137,7 +137,7 @@ team-task-manager/
 ### 1. Clone & install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/team-task-manager.git
+git clone https://github.com/CodeIt-Abhay/team-task-manager.git
 cd team-task-manager
 ```
 
@@ -371,5 +371,5 @@ curl http://localhost:3001/api/projects \
 
 Built for the Candidate Nomination Assessment — Full Stack Assignment.
 
-- GitHub: [github.com/YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- Live URL: [taskflow-frontend.up.railway.app](https://taskflow-frontend.up.railway.app)
+- GitHub: [github.com/CodeIt-Abhay](https://github.com/CodeIt-Abhay)
+- Live URL: [taskflow-frontend.up.railway.app](https://efficient-surprise-production-cf10.up.railway.app/)
