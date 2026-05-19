@@ -27,6 +27,7 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/tasks', taskRoutes);
 
 // ── Health check ──────────────────────────────────────────────────────────────
+app.get('/', (_req, res) => res.json({ status: 'ok', message: 'TaskFlow API is running', timestamp: new Date().toISOString() }));
 app.get('/health', (_req, res) => res.json({ status: 'ok', timestamp: new Date().toISOString() }));
 
 // ── 404 catch-all ─────────────────────────────────────────────────────────────
