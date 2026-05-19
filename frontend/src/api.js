@@ -1,5 +1,6 @@
 // Base URL: use env var in production, fall back to relative path (proxied by Vite dev server)
-const BASE = import.meta.env.VITE_API_URL || '';
+const rawBase = import.meta.env.VITE_API_URL || '';
+const BASE = rawBase.endsWith('/') ? rawBase.slice(0, -1) : rawBase;
 
 // ── Token helpers ────────────────────────────────────────────────────────────
 export const token = {

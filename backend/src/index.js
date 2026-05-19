@@ -12,9 +12,15 @@ const app = express();
 
 // ── Security & parsing ────────────────────────────────────────────────────────
 app.use(helmet());
+
+let frontendOrigin = process.env.FRONTEND_URL || '*';
+if (typeof frontendOrigin === 'string' && frontendOrigin.endsWith('/')) {
+  frontendOrigin = frontendOrigin.slice(0, -1);
+}
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || '*',
+    origin: frontendOrigin,
     credentials: true,
   })
 );
