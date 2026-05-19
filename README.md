@@ -1,4 +1,4 @@
-# ◈ TaskFlow — Team Task Manager
+# ◈ TaskFlow — Team Task Manager [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://efficient-surprise-production-cf10.up.railway.app/)
 
 > Full-stack role-based task management app built with React, Node.js, Express, PostgreSQL (Prisma) and deployed on Railway.
 
